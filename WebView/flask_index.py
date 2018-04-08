@@ -123,29 +123,27 @@ def get_all_data():
    r = requests.get(url,headers=headers )
   
    HTMLbody="""<head><style>
-           table    { 
-           border-spacing: 1; 
-           border-collapse: collapse; 
-           background:white;
-           border-radius:6px;
-           overflow:hidden;
-           max-width:800px; 
-           width:100%;
-           margin:0 auto;
-           position:relative;
-              }
+           #info-table {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 1500;
+                }
 
-               tr {
-              background-color: #def;
-               }
-            th {
-              background-color: #cba;
+            #info-table td, #info-table th {
+                border: 1px solid #ddd;
+                padding: 8px;
             }
-            td {
-           width: 30%;
-           height: 30px;
-           color: red;
-           background: transparent;
+
+            #info-table tr:nth-child(even){background-color: #f2f2f2;}
+
+            #info-table tr:hover {background-color: #ddd;}
+
+            #info-table th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #ADD8E6;
+                color: white;
             }
            
           </style>
@@ -153,7 +151,7 @@ def get_all_data():
           </head><body>"""
 
     #<meta http-equiv="Refresh" content="1">
-   HTMLtable=json2html.convert(json = r.json(), table_attributes="id=\"info-table\"  border=\"1 px \"  background-color: \"#4CAF50\" width=\"100%\" class=\"table table-bordered table-hover\"")
+   HTMLtable=json2html.convert(json = r.json(), table_attributes="id=\"info-table\"  border=\"1 px \"  background-color: \"#4CAF50\" width=\"1500\" class=\"table table-bordered table-hover\"")
    HTMLCom=HTMLbody+HTMLtable   
    return  (HTMLCom)
  
