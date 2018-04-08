@@ -91,7 +91,9 @@ def do_admin_login():
     else:
         flash ('wrong password!')
     
-
+@app.route('/success')
+def  successmsg():
+    return render_template('success.html')
 
 @app.route('/getAllTransaction')
 def get_all_data():
