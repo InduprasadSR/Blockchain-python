@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,redirect
 from flask import jsonify
 from flask import request
 import hashlib
@@ -43,8 +43,11 @@ def createTransactioninPortal():
         'Amount':Amount
         }
         generalLedger.append(Newdata)
-        return 'Wow! your transaction is successful!'
+            
+        return redirect("http://127.0.0.1:5004/success")
+    
     else:
+        
         return 'Invalid transaction'
 
 
@@ -66,6 +69,7 @@ def createTransaction():
     else:
         return 'invalid transaction'
 
+
 @app.route('/postip',methods=['POST'])
 def addIp():
     NewIp = {
@@ -84,3 +88,4 @@ def getAllIp():
 
 if __name__ == '__main__':
    app.run(host= '0.0.0.0', port=5000)
+
